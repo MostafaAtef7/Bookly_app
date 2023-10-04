@@ -37,6 +37,13 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
   }
 
+// any controller we must dispose it because if we didn't it will work for nothing
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
