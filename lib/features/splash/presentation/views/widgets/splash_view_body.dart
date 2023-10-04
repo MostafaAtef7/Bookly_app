@@ -23,7 +23,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     initSlideAnimation();
-    navigatToHomeView();
+    // it do order after the duration
+    Future.delayed(const Duration(seconds: 2), () {
+      // Get.to => feature from getx to navigate
+      Get.to(() => const HomeView(), transition: Transition.fade, duration: kTransitionDuration);
+    });
     super.initState();
   }
 
@@ -49,24 +53,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ),
           // AnimatedBuilder => wrape widget that use animation to rebuild it only without rebuild all UI
           SlidingText(slidingAnimation: slidingAnimation),
-          // AnimatedBuilder(
-          //     animation: slidingAnimation,
-          //     builder: (context, _) {
-          //       return SlideTransition(
-          //         position: slidingAnimation,
-          //         child: const Text(
-          //           "Open Your Mind",
-          //           textAlign: TextAlign.center,
-          //           style: TextStyle(
-          //             fontWeight: FontWeight.bold,
-          //           ),
-          //         ),
-          //       );
-          //     })
+          
         ],
       ),
     );
   }
+
   void navigatToHomeView() {
     // to apply something after the duration
     Future.delayed(const Duration(seconds: 2), () {
@@ -75,6 +67,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           duration: kTransitionAnimation, transition: Transition.fade);
     });
   }
+
 
   void initSlideAnimation() {
     animationController = AnimationController(
