@@ -23,15 +23,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
   @override
   void initState() {
     initSlideAnimation();
-    // it do order after the duration
-    Future.delayed(const Duration(seconds: 2), () {
-      // Get.to => feature from getx to navigate
-      Get.to(() => const HomeView(), transition: Transition.fade, duration: kTransitionDuration);
-    });
+    navigatToHomeView();
     super.initState();
   }
 
-  
 // any controller we must dispose it because if we didn't it will work for nothing
   @override
   void dispose() {
@@ -53,7 +48,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
           ),
           // AnimatedBuilder => wrape widget that use animation to rebuild it only without rebuild all UI
           SlidingText(slidingAnimation: slidingAnimation),
-          
         ],
       ),
     );
@@ -64,10 +58,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(const Duration(seconds: 2), () {
       // using getx to navigator
       Get.to(() => const HomeView(),
-          duration: kTransitionAnimation, transition: Transition.fade);
+          duration: kTransitionDuration, transition: Transition.fade);
     });
   }
-
 
   void initSlideAnimation() {
     animationController = AnimationController(
@@ -86,5 +79,4 @@ class _SplashViewBodyState extends State<SplashViewBody>
     //   setState(() {});
     // });
   }
-
 }
