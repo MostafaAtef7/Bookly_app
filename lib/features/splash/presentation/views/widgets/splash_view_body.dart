@@ -1,6 +1,9 @@
+import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:bookly/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -19,21 +22,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   void initState() {
-    animationController = AnimationController(
-      vsync: this /*refere to SingleTickerProviderStateMixin*/,
-      duration: const Duration(seconds: 3), /*Animation works for the duration*/
-    );
-    slidingAnimation = Tween<Offset>(
-      begin: const Offset(0, 15),
-      end: const Offset(0, 0),
-    ).animate(animationController);
-    // start playing animation
-    animationController.forward();
-
-    // listen to any change and setState but we user AnimatedBuilder so it listen instead addListener
-    // slidingAnimation.addListener(() {
-    //   setState(() {});
-    // });
+    initSlideAnimation();
+    // it do order after the duration
+    Future.delayed(const Duration(seconds: 2), () {
+      // Get.to => feature from getx to navigate
+      Get.to(() => const HomeView(), transition: Transition.fade, duration: kTransitionDuration);
+    });
     super.initState();
   }
 
@@ -75,5 +69,23 @@ class _SplashViewBodyState extends State<SplashViewBody>
         ],
       ),
     );
+  }
+
+  void initSlideAnimation() {
+    animationController = AnimationController(
+      vsync: this /*refere to SingleTickerProviderStateMixin*/,
+      duration: const Duration(seconds: 3), /*Animation works for the duration*/
+    );
+    slidingAnimation = Tween<Offset>(
+      begin: const Offset(0, 15),
+      end: const Offset(0, 0),
+    ).animate(animationController);
+    // start playing animation
+    animationController.forward();
+
+    // listen to any change and setState but we user AnimatedBuilder so it listen instead addListener
+    // slidingAnimation.addListener(() {
+    //   setState(() {});
+    // });
   }
 }
