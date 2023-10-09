@@ -27,7 +27,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.initState();
   }
 
-// any controller we must dispose it because if we didn't it will work for nothing
+// any controller must disposed because if we didn't it will work for nothing
   @override
   void dispose() {
     animationController.dispose();
@@ -46,7 +46,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
           const SizedBox(
             height: 10,
           ),
-          // AnimatedBuilder => wrape widget that use animation to rebuild it only without rebuild all UI
           SlidingText(slidingAnimation: slidingAnimation),
         ],
       ),

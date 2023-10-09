@@ -8,6 +8,7 @@ class SlidingText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // AnimatedBuilder => wrape widget that use animation to rebuild it only without rebuild all UI
     return AnimatedBuilder(
         animation: slidingAnimation,
         builder: (context, _) {
