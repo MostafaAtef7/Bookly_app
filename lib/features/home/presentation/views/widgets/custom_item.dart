@@ -9,14 +9,16 @@ class CustomItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.16,
+      height: MediaQuery.of(context).size.height * 0.15,
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
           AspectRatio(
-            aspectRatio: 1.5 / 2, //  width/height
+            aspectRatio: 0.8 / 1.1, //  width/height
             child: Container(
               decoration: const BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
                 image:
                     DecorationImage(image: AssetImage(AssetsPathes.testImage)),
               ),
