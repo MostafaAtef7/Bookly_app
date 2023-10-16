@@ -1,8 +1,8 @@
-import 'package:bookly/features/home/presentation/views/widgets/custom_photo.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
-class CustomPhotoList extends StatelessWidget {
-  const CustomPhotoList({super.key});
+class CustomBookImageList extends StatelessWidget {
+  const CustomBookImageList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CustomPhotoList extends StatelessWidget {
         ),
         scrollDirection: Axis.horizontal,
         itemBuilder: (ctx, index) {
-          return const CustomPhoto();
+          return const CustomBookImage();
         },
       ),
     );
