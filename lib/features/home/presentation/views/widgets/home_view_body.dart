@@ -3,7 +3,6 @@ import 'package:bookly/features/home/presentation/views/widgets/custom_appbar.da
 import 'package:bookly/features/home/presentation/views/widgets/custom_item_list.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_book_image_list.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});

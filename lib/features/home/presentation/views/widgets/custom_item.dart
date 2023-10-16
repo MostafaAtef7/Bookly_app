@@ -1,8 +1,7 @@
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/text_styles.dart';
+import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class CustomItem extends StatelessWidget {
   const CustomItem({super.key});
@@ -20,8 +19,8 @@ class CustomItem extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                image: DecorationImage(
-                    image: AssetImage(AssetsPathes.testImage)),
+                image:
+                    DecorationImage(image: AssetImage(AssetsPathes.testImage)),
               ),
             ),
           ),
@@ -66,31 +65,7 @@ class CustomItem extends StatelessWidget {
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Row(
-                      children: [
-                        const Icon(
-                          FontAwesomeIcons.solidStar,
-                          color: Color(0xffffdd4f),
-                        ),
-                        const SizedBox(
-                          width: 6.3,
-                        ),
-                        const Text(
-                          "4.8",
-                          overflow: TextOverflow.ellipsis,
-                          style: Styles.textStyle16,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "(2148)",
-                          overflow: TextOverflow.ellipsis,
-                          style: Styles.textStyle14
-                              .copyWith(color: const Color(0xff707070)),
-                        ),
-                      ],
-                    ),
+                    const Bookrating(mainAxisAlignment: MainAxisAlignment.center,),
                   ],
                 )
               ],
