@@ -98,6 +98,5 @@ class CustomItem extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
