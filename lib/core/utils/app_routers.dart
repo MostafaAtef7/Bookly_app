@@ -10,7 +10,8 @@ abstract class AppRouter {
   static final router = GoRouter(
     routes: [
       GoRoute(
-        path: "/", /* routes with only "/" as path it initial route that the app navigate to */
+        path: "/",
+        /* routes with only "/" as path it initial route that the app navigate to */
         builder: (context, state) => const SplashView(),
       ),
       GoRoute(
@@ -18,7 +19,7 @@ abstract class AppRouter {
         builder: (context, state) => const HomeView(),
       ),
       GoRoute(
-        path: homeView,
+        path: bookDetailsView,
         builder: (context, state) => const BookDetailsView(),
       ),
     ],

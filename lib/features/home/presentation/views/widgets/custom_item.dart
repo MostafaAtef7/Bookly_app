@@ -3,6 +3,7 @@ import 'package:bookly/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+
 class CustomItem extends StatelessWidget {
   const CustomItem({super.key});
 
@@ -19,8 +20,8 @@ class CustomItem extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                image:
-                    DecorationImage(image: AssetImage(AssetsPathes.testImage)),
+                image: DecorationImage(
+                    image: AssetImage(AssetsPathes.testImage)),
               ),
             ),
           ),
