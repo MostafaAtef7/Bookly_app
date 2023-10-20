@@ -13,7 +13,7 @@ class BookDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-    // SliverFillRemaining => work with expanded but SingleChildScrollView can not work
+        // SliverFillRemaining => work with expanded but SingleChildScrollView can not work
         SliverFillRemaining(
           hasScrollBody: false,
           child: Padding(
@@ -22,7 +22,7 @@ class BookDetailsViewBody extends StatelessWidget {
               children: [
                 const CustomBookDetailsAppbar(),
                 const SizedBox(
-                  height: 35,
+                  height: 20,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
@@ -59,7 +59,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 const BookAction(),
                 const Expanded(
                   child: SizedBox(
-                    height: 40,
+                    height: 10,
                   ),
                 ),
                 Align(
@@ -75,7 +75,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 ),
                 const SimilarBooksList(),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
               ],
             ),
