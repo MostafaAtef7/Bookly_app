@@ -8,7 +8,7 @@ class CustomBookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     // AspectRatio => if you put height it handle width based on height and otherwise
     return AspectRatio(
-      aspectRatio: 1 / 1.5, //  width/height
+      aspectRatio: 1 / 1.45, //  width/height
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.red,
