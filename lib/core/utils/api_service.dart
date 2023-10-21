@@ -6,7 +6,6 @@ class ApiService {
 
   Future<Map<String, dynamic>> get({required url}) async {
     Response response = await _dio.get("$_baseUrl$url");
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     return response.data;
   }
 }

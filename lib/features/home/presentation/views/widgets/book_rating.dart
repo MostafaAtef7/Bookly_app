@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Bookrating extends StatelessWidget {
-  const Bookrating({super.key, required this.mainAxisAlignment, required this.count, required this.rating});
+  const Bookrating(
+      {super.key,
+      required this.mainAxisAlignment,
+      required this.count,
+      required this.rating});
 
   final MainAxisAlignment mainAxisAlignment;
   final int count;
@@ -30,7 +34,7 @@ class Bookrating extends StatelessWidget {
           width: 5,
         ),
         Text(
-          count.toString(),
+          "(${count.toString()})",
           overflow: TextOverflow.ellipsis,
           style: Styles.textStyle14.copyWith(color: const Color(0xff707070)),
         ),
