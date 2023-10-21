@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomBookImage extends StatelessWidget {
@@ -5,18 +6,15 @@ class CustomBookImage extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    // AspectRatio => if you put height it handle width based on height and otherwise
-    return AspectRatio(
-      aspectRatio: 1 / 1.45, //  width/height
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: NetworkImage(
-              imageUrl,
-            ),
-          ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: AspectRatio(
+        // AspectRatio => if you put height it handle width based on height and otherwise
+        aspectRatio: 1 / 1.45, //  width/height
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          errorWidget: (ctx, url, error) => const Icon(Icons.error),
+          fit: BoxFit.fill,
         ),
       ),
     );
