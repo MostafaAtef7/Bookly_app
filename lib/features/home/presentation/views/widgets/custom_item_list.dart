@@ -26,7 +26,8 @@ class CustomItemList extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 return GestureDetector(
                     onTap: () {
-                      GoRouter.of(context).push(AppRouter.bookDetailsView);
+                      // if we add extra to to page we must give it the extra when we navigate
+                      GoRouter.of(context).push(AppRouter.bookDetailsView, extra: state.books[index]);
                     },
                     child: CustomItem(book: state.books[index]));
               });
