@@ -24,15 +24,28 @@ class HomeRepoImplementation implements HomeRepo {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
-              return left(ServerFailure(errMsg: "Opps Unexpected Error, please try again"));
-
+      return left(
+          ServerFailure(errMsg: "Opps Unexpected Error, please try again"));
     }
   }
 
   @override
-  Future<Either<Failures, List<BookModel>>> fetchBooksDetails() {
-    // TODO: implement fetchBooksDetails
-    throw UnimplementedError();
+  Future<Either<Failures, List<BookModel>>> fetchBooksDetails() async {
+    try {
+      Map<String, dynamic> data = await apiService.get(
+          url: "volumes?q=subjetc:Proframming&Filtering=free-ebooks");
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(
+          ServerFailure(errMsg: "Opps Unexpected Error, please try again"));
+    }
   }
 
   @override
