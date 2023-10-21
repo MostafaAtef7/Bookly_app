@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/app_routers.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -20,7 +21,7 @@ class SearchResultListView extends StatelessWidget {
               onTap: () {
                 GoRouter.of(context).push(AppRouter.bookDetailsView);
               },
-              child: const CustomItem());
+              child: const CustomItem(book: BookModel(),));
         });
   }
 }

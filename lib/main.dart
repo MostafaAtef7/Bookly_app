@@ -33,7 +33,7 @@ class Bookly extends StatelessWidget {
           BlocProvider(
             create: (ctx) => NewestBooksCubit(
               getIt.get<HomeRepoImplementation>(),
-            ),
+            )..fetchNewestBooks(),
           ),
         ],
         /*GetMaterialAp => used when i use Getx*/

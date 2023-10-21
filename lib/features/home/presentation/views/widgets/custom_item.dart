@@ -1,10 +1,13 @@
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/text_styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomItem extends StatelessWidget {
-  const CustomItem({super.key});
+  const CustomItem({super.key, required this.book});
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +16,7 @@ class CustomItem extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         children: [
-          AspectRatio(
-            aspectRatio: 0.8 / 1.1, //  width/height
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                image:
-                    DecorationImage(image: AssetImage(AssetsPathes.testImage)),
-              ),
-            ),
-          ),
+          CustomBookImage(imageUrl: book.volumeInfo!.imageLinks!.thumbnail!),
           const SizedBox(
             width: 20,
           ),
@@ -34,7 +27,7 @@ class CustomItem extends StatelessWidget {
               children: [
                 SizedBox(
                   child: Text(
-                    "Harry Potter and the Goblet of Fire",
+                    book.volumeInfo!.title ?? " ",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     // copyWith => rewrite the values
@@ -44,9 +37,9 @@ class CustomItem extends StatelessWidget {
                 const SizedBox(
                   height: 3,
                 ),
-                const SizedBox(
+                SizedBox(
                   child: Text(
-                    "J.K. Rowling",
+                    book.volumeInfo!.authors!.first,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14,
                   ),
@@ -59,13 +52,17 @@ class CustomItem extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: Text(
-                        r"19.99 $",
+                        "Free",
                         overflow: TextOverflow.ellipsis,
                         style: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const Bookrating(mainAxisAlignment: MainAxisAlignment.center,),
+                    Bookrating(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      rating: book.volumeInfo!.averageRating ?? 0,
+                      count: book.volumeInfo!.ratingsCount ?? 0,
+                    ),
                   ],
                 )
               ],
