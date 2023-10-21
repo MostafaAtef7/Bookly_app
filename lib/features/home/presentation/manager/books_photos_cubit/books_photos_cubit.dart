@@ -15,7 +15,7 @@ class BooksPhotosCubit extends Cubit<BooksPhotosState> {
     emit(BooksPhotosLoading());
       var result = await homeRepo.fetchBooksPhotos();
       result.fold((failure) => emit(BooksPhotosFailure(errMsg: failure.errMsg)),
-          (books) => emit(BooksPhotosSuccess(books)));
+          (books) => emit(BooksPhotosSuccess(books: books)));
 
   }
 }

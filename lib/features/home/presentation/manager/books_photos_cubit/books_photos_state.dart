@@ -19,5 +19,5 @@ final class BooksPhotosFailure extends BooksPhotosState {
 
 final class BooksPhotosSuccess extends BooksPhotosState {
   final List<BookModel> books;
-  const BooksPhotosSuccess(this.books);
+  const BooksPhotosSuccess({required this.books});
 }
