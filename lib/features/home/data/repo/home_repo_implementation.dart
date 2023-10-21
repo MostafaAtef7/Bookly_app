@@ -12,6 +12,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failures, List<BookModel>>> fetchNewestBooks() async {
     try {
+
       Map<String, dynamic> data = await apiService.get(
           url:
               "volumes?q=subjetc:Proframming&Filtering=free-ebooks&Sorting=newest");
@@ -25,7 +26,7 @@ class HomeRepoImplementation implements HomeRepo {
         return left(ServerFailure.fromDioError(e));
       }
       return left(
-          ServerFailure(errMsg: "Opps Unexpected Error, please try again"));
+          ServerFailure(errMsg: e.toString()));
     }
   }
 
@@ -46,11 +47,5 @@ class HomeRepoImplementation implements HomeRepo {
       return left(
           ServerFailure(errMsg: "Opps Unexpected Error, please try again"));
     }
-  }
-
-  @override
-  Future<Either<Failures, List<BookModel>>> fetchBooksPhotos() {
-    // TODO: implement fetchBooksPhotos
-    throw UnimplementedError();
   }
 }

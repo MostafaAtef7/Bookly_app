@@ -1,6 +1,7 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/api_service.dart';
 import 'package:bookly/core/utils/app_routers.dart';
+import 'package:bookly/core/utils/bloc_observer.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/features/home/data/repo/home_repo_implementation.dart';
 import 'package:bookly/features/home/presentation/manager/books_photos_cubit/books_photos_cubit.dart';
@@ -11,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   setupGetIt();
+  Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
 }
 
@@ -24,11 +26,15 @@ class Bookly extends StatelessWidget {
         providers: [
           // getIt.get<HomeRepoImplementation>() => to get singleton that i made
           BlocProvider(
-              create: (ctx) =>
-                  BooksPhotosCubit(getIt.get<HomeRepoImplementation>())),
+            create: (ctx) => BooksPhotosCubit(
+              getIt.get<HomeRepoImplementation>(),
+            )..fetchBooksPhotos(), //two dots to call this function after running the cubit
+          ),
           BlocProvider(
-              create: (ctx) =>
-                  NewestBooksCubit(getIt.get<HomeRepoImplementation>())),
+            create: (ctx) => NewestBooksCubit(
+              getIt.get<HomeRepoImplementation>(),
+            ),
+          ),
         ],
         /*GetMaterialAp => used when i use Getx*/
         // MaterialApp.router => used with go_router package that manage all navigation of the app

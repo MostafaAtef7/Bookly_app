@@ -22,7 +22,7 @@ class HomeViewBody extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            CustomBookImageList(),
+            CustomBooksPhotosList(),
             SizedBox(
               height: 20,
             ),
