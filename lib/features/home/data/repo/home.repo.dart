@@ -7,4 +7,5 @@ abstract class HomeRepo {
   // Either => abstract class from dartz package that has left side if there is exception and right side if there isn't
   Future<Either<Failures, List<BookModel>>> fetchBestSellerBooks();
   Future<Either<Failures, List<BookModel>>> fetchBooksPhotos();
+  Future<Either<Failures, List<BookModel>>> fetchBooksDetails();
 }
