@@ -8,6 +8,7 @@ part "book_search_state.dart";
 class BookSearchCubit extends Cubit<BookSearchState> {
   BookSearchCubit(super.initialState, this.searchRepo);
   final SearchRepo searchRepo;
+  String searchWords = "";
 
   Future<void> fetchBooksInSearch() async {
     emit(BookSearchLoading());
