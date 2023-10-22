@@ -63,7 +63,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 const SizedBox(
                   height: 37,
                 ),
-                const BookAction(),
+                BookAction(bookModel: bookModel,),
                 const Expanded(
                   child: SizedBox(
                     height: 10,
