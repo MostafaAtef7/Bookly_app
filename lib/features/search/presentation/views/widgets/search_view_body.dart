@@ -3,14 +3,8 @@ import 'package:bookly/features/search/presentation/views/widgets/custom_search_
 import 'package:bookly/features/search/presentation/views/widgets/search_result_list_view.dart';
 import 'package:flutter/material.dart';
 
-class SearchViewBody extends StatefulWidget {
+class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
-
-  @override
-  State<SearchViewBody> createState() => _SearchViewBodyState();
-}
-
-class _SearchViewBodyState extends State<SearchViewBody> {
 
   @override
   Widget build(BuildContext context) {

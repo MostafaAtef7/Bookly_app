@@ -18,6 +18,7 @@ class SearchResultListView extends StatefulWidget {
 class _SearchResultListViewState extends State<SearchResultListView> {
   String searchWords = "";
   List<BookModel> books = [];
+  bool noResult = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,9 @@ class _SearchResultListViewState extends State<SearchResultListView> {
         listener: (context, state) {
       if (state is BookSearchSuccess) {
         setState(() {
+          books.clear();
           books = state.books;
+          searchWords = BlocProvider.of<BookSearchCubit>(context).searchWords;
         });
       }
     }, builder: (context, state) {
@@ -38,18 +41,27 @@ class _SearchResultListViewState extends State<SearchResultListView> {
                   height: 15,
                 ),
             itemBuilder: (ctx, index) {
-              if (books[index].volumeInfo!.title!
+              if (books[index]
+                  .volumeInfo!
+                  .title!
                   .toLowerCase()
                   .contains(searchWords.toLowerCase())) {
-
                 return GestureDetector(
                     onTap: () {
-                      GoRouter.of(context).push(AppRouter.bookDetailsView,
-                          extra: state.books[index]);
+                      GoRouter.of(context)
+                          .push(AppRouter.bookDetailsView, extra: books[index]);
                     },
                     child: CustomItem(
-                      book: state.books[index],
+                      book: books[index],
                     ));
+              } else if (!noResult) {
+                noResult = true;
+                return const Center(
+                  child: Text(
+                    "No Search Result",
+                    style: Styles.textStyle20,
+                  ),
+                );
               } else {
                 return const SizedBox();
               }
