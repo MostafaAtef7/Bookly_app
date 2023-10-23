@@ -1,18 +1,15 @@
 import 'package:bookly/features/search/presentation/views/functions/fetch_book_search_fun.dart';
-import 'package:bookly/features/search/presentation/views/functions/get_search_words.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
       child: TextField(
-
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -37,9 +34,8 @@ class CustomSearchTextField extends StatelessWidget {
             ),
           ),
         ),
-        onChanged: (value) {
-          fetchBookSearchFun(context);
-          getSearchWords(context, value);
+        onSubmitted: (value) {
+          fetchBookSearchFun(context,value);
         },
       ),
     );

@@ -10,9 +10,13 @@ class BooksPhotosCubit extends Cubit<BooksPhotosState> {
 
   final HomeRepo homeRepo;
   Future<void> fetchBooksPhotos() async {
-    emit(BooksPhotosLoading());
-    var result = await homeRepo.fetchNewestBooks();
-    result.fold((failure) => emit(BooksPhotosFailure(errMsg: failure.errMsg)),
-        (books) => emit(BooksPhotosSuccess(books: books)));
+    try {
+  emit(BooksPhotosLoading());
+  var result = await homeRepo.fetchNewestBooks();
+  result.fold((failure) => emit(BooksPhotosFailure(errMsg: failure.errMsg)),
+      (books) => emit(BooksPhotosSuccess(books: books)));
+} on Exception {
+  emit(const BooksPhotosFailure(errMsg: "Requisted disabled"));
+}
   }
 }
