@@ -20,10 +20,18 @@ class _BookDetailsViewState extends State<BookDetailsView> {
     super.initState();
   }
 
+  // @override
+  // void dispose() {
+  //   BlocProvider.of<RelevantBooksCubit>(context).close();
+  //   super.dispose();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BookDetailsViewBody(bookModel: widget.book,),
+      body: BookDetailsViewBody(
+        bookModel: widget.book,
+      ),
     );
   }
 }

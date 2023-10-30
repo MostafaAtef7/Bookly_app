@@ -33,39 +33,38 @@ class _SearchResultListViewState extends State<SearchResultListView> {
       }
     }, builder: (context, state) {
       if (state is BookSearchSuccess) {
-        return ListView.separated(
-            // shrinkWrap => to deal with Slivers but it make ListView build all items in one time this will affect on performance
-            // shrinkWrap: true,
-            itemCount: books.length,
+        final List<BookModel> filteredBooks = books
+            .where((book) => book.volumeInfo!.title!
+                .toLowerCase()
+                .contains(searchWords.toLowerCase()))
+            .toList();
+
+        if (filteredBooks.isEmpty) {
+          return const Center(
+            child: Text(
+              "No Search Result",
+              style: Styles.textStyle20,
+            ),
+          );
+        } else {
+          return ListView.separated(
+            itemCount: filteredBooks.length,
             separatorBuilder: (ctx, index) => const SizedBox(
-                  height: 15,
-                ),
+              height: 15,
+            ),
             itemBuilder: (ctx, index) {
-              if (books[index]
-                  .volumeInfo!
-                  .title!
-                  .toLowerCase()
-                  .contains(searchWords.toLowerCase())) {
-                return GestureDetector(
-                    onTap: () {
-                      GoRouter.of(context)
-                          .push(AppRouter.bookDetailsView, extra: books[index]);
-                    },
-                    child: CustomItem(
-                      book: books[index],
-                    ));
-              } else if (!noResult) {
-                noResult = true;
-                return const Center(
-                  child: Text(
-                    "No Search Result",
-                    style: Styles.textStyle20,
-                  ),
-                );
-              } else {
-                return const SizedBox();
-              }
-            });
+              return GestureDetector(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.bookDetailsView,
+                      extra: filteredBooks[index]);
+                },
+                child: CustomItem(
+                  book: filteredBooks[index],
+                ),
+              );
+            },
+          );
+        }
       } else if (state is BookSearchFailure) {
         return CustomError(errMsg: state.errMsg);
       } else if (state is BookSearchLoading) {

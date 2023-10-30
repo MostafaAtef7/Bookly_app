@@ -7,6 +7,6 @@ Future<void> urlLauncher(ctx, String url) async {
     await launchUrl(uri);
   } else {
     ScaffoldMessenger.of(ctx)
-        .showSnackBar(SnackBar(content: Text("Can not launch this Url: $url"),),);
+        .showSnackBar(const SnackBar(content: Text("Can not launch this Url"),),);
   }
 }
